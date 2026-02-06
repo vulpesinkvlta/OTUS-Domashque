@@ -9,14 +9,29 @@
 public static class GameComponentsLookup {
 
     public const int DebugMessage = 0;
+    public const int ECSHealth = 1;
+    public const int ECSMoveDirection = 2;
+    public const int ECSPosition = 3;
+    public const int ECSSpeed = 4;
+    public const int ECSTeam = 5;
 
-    public const int TotalComponents = 1;
+    public const int TotalComponents = 6;
 
     public static readonly string[] componentNames = {
-        "DebugMessage"
+        "DebugMessage",
+        "ECSHealth",
+        "ECSMoveDirection",
+        "ECSPosition",
+        "ECSSpeed",
+        "ECSTeam"
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(DebugMessageComponent)
+        typeof(DebugMessageComponent),
+        typeof(ECS.HealthComponent),
+        typeof(ECS.MoveDirectionComponent),
+        typeof(ECS.PositionComponent),
+        typeof(ECS.SpeedComponent),
+        typeof(ECS.TeamComponent)
     };
 }

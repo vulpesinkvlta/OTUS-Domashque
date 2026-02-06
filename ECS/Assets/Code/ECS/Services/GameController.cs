@@ -2,7 +2,7 @@
 using Entitas;
 using UnityEngine;
 
-namespace Assets.Code.ECS.Services
+namespace ECS
 {
     public class GameController : MonoBehaviour
     {
