@@ -1,12 +1,9 @@
 ﻿using Entitas;
 using UnityEngine;
 
-
-namespace ECS
+[Game]
+public class MoveDirectionComponent : IComponent
 {
-    [Game]
-    public class MoveDirectionComponent : IComponent 
-    {
-        public Vector3 Value;
-    }
+    public Vector3 Value;
 }
+

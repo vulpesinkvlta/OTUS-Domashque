@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public ECS.MoveDirectionComponent eCSMoveDirection { get { return (ECS.MoveDirectionComponent)GetComponent(GameComponentsLookup.ECSMoveDirection); } }
-    public bool hasECSMoveDirection { get { return HasComponent(GameComponentsLookup.ECSMoveDirection); } }
+    public MoveDirectionComponent moveDirection { get { return (MoveDirectionComponent)GetComponent(GameComponentsLookup.MoveDirection); } }
+    public bool hasMoveDirection { get { return HasComponent(GameComponentsLookup.MoveDirection); } }
 
     public void AddMoveDirection(UnityEngine.Vector3 newValue) {
-        var index = GameComponentsLookup.ECSMoveDirection;
-        var component = (ECS.MoveDirectionComponent)CreateComponent(index, typeof(ECS.MoveDirectionComponent));
+        var index = GameComponentsLookup.MoveDirection;
+        var component = (MoveDirectionComponent)CreateComponent(index, typeof(MoveDirectionComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceMoveDirection(UnityEngine.Vector3 newValue) {
-        var index = GameComponentsLookup.ECSMoveDirection;
-        var component = (ECS.MoveDirectionComponent)CreateComponent(index, typeof(ECS.MoveDirectionComponent));
+        var index = GameComponentsLookup.MoveDirection;
+        var component = (MoveDirectionComponent)CreateComponent(index, typeof(MoveDirectionComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }
 
     public void RemoveMoveDirection() {
-        RemoveComponent(GameComponentsLookup.ECSMoveDirection);
+        RemoveComponent(GameComponentsLookup.MoveDirection);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherECSMoveDirection;
+    static Entitas.IMatcher<GameEntity> _matcherMoveDirection;
 
-    public static Entitas.IMatcher<GameEntity> ECSMoveDirection {
+    public static Entitas.IMatcher<GameEntity> MoveDirection {
         get {
-            if (_matcherECSMoveDirection == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.ECSMoveDirection);
+            if (_matcherMoveDirection == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.MoveDirection);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherECSMoveDirection = matcher;
+                _matcherMoveDirection = matcher;
             }
 
-            return _matcherECSMoveDirection;
+            return _matcherMoveDirection;
         }
     }
 }

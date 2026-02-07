@@ -1,11 +1,9 @@
 ﻿using Entitas;
 using UnityEngine;
 
-namespace ECS
+[Game]
+public class PositionComponent : IComponent
 {
-    [Game]
-    public class PositionComponent : IComponent
-    {
-        public Vector3 Position;
-    }
+    public Vector3 Value;
 }
+

@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public ECS.SpeedComponent eCSSpeed { get { return (ECS.SpeedComponent)GetComponent(GameComponentsLookup.ECSSpeed); } }
-    public bool hasECSSpeed { get { return HasComponent(GameComponentsLookup.ECSSpeed); } }
+    public DamageComponent damage { get { return (DamageComponent)GetComponent(GameComponentsLookup.Damage); } }
+    public bool hasDamage { get { return HasComponent(GameComponentsLookup.Damage); } }
 
-    public void AddSpeed(float newSpeed) {
-        var index = GameComponentsLookup.ECSSpeed;
-        var component = (ECS.SpeedComponent)CreateComponent(index, typeof(ECS.SpeedComponent));
-        component.Speed = newSpeed;
+    public void AddDamage(int newValue) {
+        var index = GameComponentsLookup.Damage;
+        var component = (DamageComponent)CreateComponent(index, typeof(DamageComponent));
+        component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceSpeed(float newSpeed) {
-        var index = GameComponentsLookup.ECSSpeed;
-        var component = (ECS.SpeedComponent)CreateComponent(index, typeof(ECS.SpeedComponent));
-        component.Speed = newSpeed;
+    public void ReplaceDamage(int newValue) {
+        var index = GameComponentsLookup.Damage;
+        var component = (DamageComponent)CreateComponent(index, typeof(DamageComponent));
+        component.Value = newValue;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveSpeed() {
-        RemoveComponent(GameComponentsLookup.ECSSpeed);
+    public void RemoveDamage() {
+        RemoveComponent(GameComponentsLookup.Damage);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherECSSpeed;
+    static Entitas.IMatcher<GameEntity> _matcherDamage;
 
-    public static Entitas.IMatcher<GameEntity> ECSSpeed {
+    public static Entitas.IMatcher<GameEntity> Damage {
         get {
-            if (_matcherECSSpeed == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.ECSSpeed);
+            if (_matcherDamage == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Damage);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherECSSpeed = matcher;
+                _matcherDamage = matcher;
             }
 
-            return _matcherECSSpeed;
+            return _matcherDamage;
         }
     }
 }

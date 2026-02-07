@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public ECS.TeamComponent eCSTeam { get { return (ECS.TeamComponent)GetComponent(GameComponentsLookup.ECSTeam); } }
-    public bool hasECSTeam { get { return HasComponent(GameComponentsLookup.ECSTeam); } }
+    public TeamComponent team { get { return (TeamComponent)GetComponent(GameComponentsLookup.Team); } }
+    public bool hasTeam { get { return HasComponent(GameComponentsLookup.Team); } }
 
-    public void AddTeam(ECS.TeamColor newColor) {
-        var index = GameComponentsLookup.ECSTeam;
-        var component = (ECS.TeamComponent)CreateComponent(index, typeof(ECS.TeamComponent));
+    public void AddTeam(TeamColor newColor) {
+        var index = GameComponentsLookup.Team;
+        var component = (TeamComponent)CreateComponent(index, typeof(TeamComponent));
         component.Color = newColor;
         AddComponent(index, component);
     }
 
-    public void ReplaceTeam(ECS.TeamColor newColor) {
-        var index = GameComponentsLookup.ECSTeam;
-        var component = (ECS.TeamComponent)CreateComponent(index, typeof(ECS.TeamComponent));
+    public void ReplaceTeam(TeamColor newColor) {
+        var index = GameComponentsLookup.Team;
+        var component = (TeamComponent)CreateComponent(index, typeof(TeamComponent));
         component.Color = newColor;
         ReplaceComponent(index, component);
     }
 
     public void RemoveTeam() {
-        RemoveComponent(GameComponentsLookup.ECSTeam);
+        RemoveComponent(GameComponentsLookup.Team);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherECSTeam;
+    static Entitas.IMatcher<GameEntity> _matcherTeam;
 
-    public static Entitas.IMatcher<GameEntity> ECSTeam {
+    public static Entitas.IMatcher<GameEntity> Team {
         get {
-            if (_matcherECSTeam == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.ECSTeam);
+            if (_matcherTeam == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Team);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherECSTeam = matcher;
+                _matcherTeam = matcher;
             }
 
-            return _matcherECSTeam;
+            return _matcherTeam;
         }
     }
 }

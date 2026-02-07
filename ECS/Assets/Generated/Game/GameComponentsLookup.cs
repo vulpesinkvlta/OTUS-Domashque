@@ -8,30 +8,42 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int DebugMessage = 0;
-    public const int ECSHealth = 1;
-    public const int ECSMoveDirection = 2;
-    public const int ECSPosition = 3;
-    public const int ECSSpeed = 4;
-    public const int ECSTeam = 5;
+    public const int Bullet = 0;
+    public const int CanShoot = 1;
+    public const int Damage = 2;
+    public const int DebugMessage = 3;
+    public const int Destroyed = 4;
+    public const int Health = 5;
+    public const int MoveDirection = 6;
+    public const int Position = 7;
+    public const int Speed = 8;
+    public const int Team = 9;
 
-    public const int TotalComponents = 6;
+    public const int TotalComponents = 10;
 
     public static readonly string[] componentNames = {
+        "Bullet",
+        "CanShoot",
+        "Damage",
         "DebugMessage",
-        "ECSHealth",
-        "ECSMoveDirection",
-        "ECSPosition",
-        "ECSSpeed",
-        "ECSTeam"
+        "Destroyed",
+        "Value",
+        "MoveDirection",
+        "Position",
+        "Speed",
+        "Team"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(BulletComponent),
+        typeof(CanShootComponent),
+        typeof(DamageComponent),
         typeof(DebugMessageComponent),
-        typeof(ECS.HealthComponent),
-        typeof(ECS.MoveDirectionComponent),
-        typeof(ECS.PositionComponent),
-        typeof(ECS.SpeedComponent),
-        typeof(ECS.TeamComponent)
+        typeof(DestroyedComponent),
+        typeof(HealthComponent),
+        typeof(MoveDirectionComponent),
+        typeof(PositionComponent),
+        typeof(SpeedComponent),
+        typeof(TeamComponent)
     };
 }

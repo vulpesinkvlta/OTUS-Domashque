@@ -1,8 +1,8 @@
 ﻿using Entitas;
 
-
 [Game]
-public class HealthComponent : IComponent
+
+public class DamageComponent : IComponent
 {
     public int Value;
 }
