@@ -1,4 +1,5 @@
 ﻿using Entitas;
+using System.Collections;
 using UnityEngine;
 
 public class BulletHitSystem : IExecuteSystem
@@ -19,21 +20,32 @@ public class BulletHitSystem : IExecuteSystem
 
     public void Execute()
     {
-        foreach (var bullet in _bullets)
+        var bullets = _bullets.GetEntities();
+        var units = _units.GetEntities();
+
+        float delta = Time.deltaTime;
+
+        foreach (var bullet in bullets)
         {
             Vector3 bulletPosition = bullet.position.Value;
-            foreach (var units in _units)
+
+            foreach (var unit in units)
             {
-                if (units.team.Color == bullet.team.Color)
+                if (unit.team.Color == bullet.team.Color)
                     continue;
 
-                Vector3 unitPosition = units.position.Value;
-                float distance = Vector3.Distance(unitPosition, bulletPosition);
-                if(distance < 0.5f)
+                float distance = Vector3.Distance(unit.position.Value, bulletPosition);
+
+                if (distance < 0.5f)
                 {
-                    units.ReplaceHealth(units.health.Value - bullet.damage.Value);
+                    unit.ReplaceHealth(unit.health.Value - bullet.damage.Value);
                     bullet.isDestroyed = true;
                     break;
+                }
+                else
+                {
+                    if(delta > 3f)
+                        bullet.isDestroyed = true;
                 }
             }
         }

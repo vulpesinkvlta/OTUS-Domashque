@@ -27,7 +27,7 @@ namespace ECS
                     float distanceToEnemy = Vector3.Distance(
                         unit.position.Value, 
                         other.position.Value);
-                    if(distanceToEnemy < 5f)
+                    if(distanceToEnemy < 15f)
                     {
                         enemyFound = true;
                         break;      

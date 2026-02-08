@@ -15,7 +15,7 @@ namespace ECS
         public void Initialize()
         {
             int columns = 10;
-            float spacing = 2f;
+            float spacing = 4f;
 
             for (int i = 0; i <= 99; i++)
             {
@@ -23,7 +23,7 @@ namespace ECS
                 int zIndex = i / columns;
                 float startPos = 30f;
                 float xPos = startPos + xIndex * spacing;
-                float zPos = zIndex * spacing;
+                float zPos = (zIndex - 5) * spacing;
 
                 var e = _context.CreateEntity();
                 e.AddTeam(TeamColor.Red);
@@ -38,7 +38,7 @@ namespace ECS
                 int zIndex = i / columns;
                 float startPos = -30f;
                 float xPos = startPos - xIndex * spacing;
-                float zPos = zIndex * spacing;
+                float zPos = (zIndex - 5) * spacing;
 
                 var e = _context.CreateEntity();
                 e.AddTeam(TeamColor.Blue);

@@ -8,12 +8,14 @@ public class HealthCleanupSystem : IExecuteSystem
         _aliveUnits = contexts.game.GetGroup(GameMatcher.AllOf(
                 GameMatcher.Health).NoneOf(GameMatcher.Destroyed));
     }
+
     public void Execute()
     {
-        foreach (var _units in _aliveUnits)
-            if(_units.health.Value <= 0)
-                _units.isDestroyed = true;
-        
+        foreach (var unit in _aliveUnits.GetEntities())
+        {
+            if (unit.health.Value <= 0)
+                unit.isDestroyed = true;
+        }
     }
 }
 

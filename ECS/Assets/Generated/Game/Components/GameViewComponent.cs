@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public HealthComponent health { get { return (HealthComponent)GetComponent(GameComponentsLookup.Health); } }
-    public bool hasHealth { get { return HasComponent(GameComponentsLookup.Health); } }
+    public ViewComponent view { get { return (ViewComponent)GetComponent(GameComponentsLookup.View); } }
+    public bool hasView { get { return HasComponent(GameComponentsLookup.View); } }
 
-    public void AddHealth(int newValue) {
-        var index = GameComponentsLookup.Health;
-        var component = (HealthComponent)CreateComponent(index, typeof(HealthComponent));
+    public void AddView(UnityEngine.GameObject newValue) {
+        var index = GameComponentsLookup.View;
+        var component = (ViewComponent)CreateComponent(index, typeof(ViewComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceHealth(int newValue) {
-        var index = GameComponentsLookup.Health;
-        var component = (HealthComponent)CreateComponent(index, typeof(HealthComponent));
+    public void ReplaceView(UnityEngine.GameObject newValue) {
+        var index = GameComponentsLookup.View;
+        var component = (ViewComponent)CreateComponent(index, typeof(ViewComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveHealth() {
-        RemoveComponent(GameComponentsLookup.Health);
+    public void RemoveView() {
+        RemoveComponent(GameComponentsLookup.View);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherHealth;
+    static Entitas.IMatcher<GameEntity> _matcherView;
 
-    public static Entitas.IMatcher<GameEntity> Health {
+    public static Entitas.IMatcher<GameEntity> View {
         get {
-            if (_matcherHealth == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Health);
+            if (_matcherView == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.View);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherHealth = matcher;
+                _matcherView = matcher;
             }
 
-            return _matcherHealth;
+            return _matcherView;
         }
     }
 }

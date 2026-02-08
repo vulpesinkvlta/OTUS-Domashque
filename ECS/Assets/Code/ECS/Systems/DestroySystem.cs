@@ -10,7 +10,7 @@ public class DestroySystem : ICleanupSystem
 
     public void Cleanup()
     {
-        foreach (var entity in _entities)
+        foreach (var entity in _entities.GetEntities())
         {
             entity.Destroy();
         }
