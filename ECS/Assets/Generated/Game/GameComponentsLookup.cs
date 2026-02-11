@@ -14,13 +14,15 @@ public static class GameComponentsLookup {
     public const int DebugMessage = 3;
     public const int Destroyed = 4;
     public const int Health = 5;
-    public const int MoveDirection = 6;
-    public const int Position = 7;
-    public const int Speed = 8;
-    public const int Team = 9;
-    public const int View = 10;
+    public const int LifeTime = 6;
+    public const int MoveDirection = 7;
+    public const int Position = 8;
+    public const int ShootCooldown = 9;
+    public const int Speed = 10;
+    public const int Team = 11;
+    public const int View = 12;
 
-    public const int TotalComponents = 11;
+    public const int TotalComponents = 13;
 
     public static readonly string[] componentNames = {
         "Bullet",
@@ -29,8 +31,10 @@ public static class GameComponentsLookup {
         "DebugMessage",
         "Destroyed",
         "Health",
+        "LifeTime",
         "MoveDirection",
         "Position",
+        "ShootCooldown",
         "Speed",
         "Team",
         "View"
@@ -43,8 +47,10 @@ public static class GameComponentsLookup {
         typeof(DebugMessageComponent),
         typeof(DestroyedComponent),
         typeof(HealthComponent),
+        typeof(LifeTimeComponent),
         typeof(MoveDirectionComponent),
         typeof(PositionComponent),
+        typeof(ShootCooldownComponent),
         typeof(SpeedComponent),
         typeof(TeamComponent),
         typeof(ViewComponent)

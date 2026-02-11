@@ -27,10 +27,11 @@ namespace ECS
 
                 var e = _context.CreateEntity();
                 e.AddTeam(TeamColor.Red);
-                e.AddHealth(10);
+                e.AddHealth(1);
                 e.AddSpeed(5f);
                 e.AddMoveDirection(new Vector3(-1, 0, 0));
                 e.AddPosition(new Vector3(xPos, 0, zPos));
+                e.AddShootCooldown(3);
             }
             for (int i = 0; i <= 99; i++)
             {
@@ -42,10 +43,11 @@ namespace ECS
 
                 var e = _context.CreateEntity();
                 e.AddTeam(TeamColor.Blue);
-                e.AddHealth(10);
+                e.AddHealth(1);
                 e.AddSpeed(5f);
                 e.AddMoveDirection(new Vector3(1, 0, 0));
                 e.AddPosition(new Vector3(xPos, 0, zPos));
+                e.AddShootCooldown(3);
             }
             
         }

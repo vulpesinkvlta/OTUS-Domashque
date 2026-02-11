@@ -9,9 +9,12 @@ public class ViewFactory : IViewFactory
         _unitPool = new GameObjectPool(unitPrefab, 200);
         _bulletPool = new GameObjectPool(bulletPrefab, 500);
     }
-    public GameObject CreateBulletView()
+    public GameObject CreateBulletView(TeamColor color)
     {
-        return _bulletPool.Get();
+        var go = _bulletPool.Get();
+        var renderer = go.GetComponent<Renderer>();
+        renderer.material.color = color == TeamColor.Red ? Color.red : Color.blue;
+        return go;
     }
 
     public GameObject CreateUnitView(TeamColor color)

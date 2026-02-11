@@ -23,8 +23,6 @@ public class BulletHitSystem : IExecuteSystem
         var bullets = _bullets.GetEntities();
         var units = _units.GetEntities();
 
-        float delta = Time.deltaTime;
-
         foreach (var bullet in bullets)
         {
             Vector3 bulletPosition = bullet.position.Value;
@@ -36,16 +34,11 @@ public class BulletHitSystem : IExecuteSystem
 
                 float distance = Vector3.Distance(unit.position.Value, bulletPosition);
 
-                if (distance < 0.5f)
+                if (distance < 1f)
                 {
                     unit.ReplaceHealth(unit.health.Value - bullet.damage.Value);
                     bullet.isDestroyed = true;
                     break;
-                }
-                else
-                {
-                    if(delta > 3f)
-                        bullet.isDestroyed = true;
                 }
             }
         }

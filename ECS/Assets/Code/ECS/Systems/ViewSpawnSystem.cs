@@ -18,7 +18,7 @@ public class ViewSpawnSystem : IExecuteSystem
             GameObject go;
 
             if (entity.isBullet)
-                go = _viewFactory.CreateBulletView();
+                go = _viewFactory.CreateBulletView(entity.team.Color);
             else
                 go = _viewFactory.CreateUnitView(entity.team.Color);
 

@@ -12,12 +12,15 @@ public class ShootingSystem : IExecuteSystem
                     GameMatcher.CanShoot,
                     GameMatcher.Position,
                     GameMatcher.Team,
-                    GameMatcher.MoveDirection));
+                    GameMatcher.MoveDirection,
+                    GameMatcher.ShootCooldown).NoneOf(GameMatcher.Destroyed));
     }
     public void Execute()
     {
-        foreach (var entity in _entities)
+        foreach (var entity in _entities.GetEntities())
         {
+            if (entity.shootCooldown.Valuye > 0f)
+                continue;
             Vector3 bulletPos = entity.position.Value + entity.moveDirection.Value * 1.5f;
             Vector3 bulletDirection = entity.moveDirection.Value;
 
@@ -28,6 +31,9 @@ public class ShootingSystem : IExecuteSystem
             bullet.AddPosition(bulletPos);
             bullet.AddMoveDirection(bulletDirection);
             bullet.AddTeam(entity.team.Color);
+            bullet.AddLifeTime(5);
+
+            entity.ReplaceShootCooldown(0.5f);
         }
     }
 }
